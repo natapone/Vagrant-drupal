@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "../project", "/var/www/html/project", :mount_options => ['dmode=777', 'fmode=777']
 
-  # config.vm.provision :shell, path: "script/bootstrap.sh"
+  config.vm.provision :shell, path: "script/bootstrap.sh"
   config.vm.provision :shell, path: "script/install_lamp.sh"
   config.vm.provision :shell, path: "script/install_drupal.sh"
 

@@ -17,9 +17,9 @@ sudo apt-get -y install php5 libapache2-mod-php5 php5-mcrypt php5-gd
 
 # Installing MySQL and it's dependencies, Also, setting up root password for MySQL as it will prompt to enter the password during installation
 
-sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password ${DB_ROOT_PASS}'
-sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password ${DB_ROOT_PASS}'
-sudo apt-get -y install mysql-server-5.5 libapache2-mod-auth-mysql php5-mysql
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${DB_ROOT_PASS}"
+sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${DB_ROOT_PASS}"
+sudo apt-get -y install mysql-server libapache2-mod-auth-mysql php5-mysql
 
 # Creat database
 if [ ! -f /var/log/databasesetup ];
