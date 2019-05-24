@@ -16,5 +16,3 @@ $settings['hash_salt'] = '';
 $settings['update_free_access'] = TRUE;
 
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
-
-

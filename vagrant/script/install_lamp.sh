@@ -13,13 +13,15 @@ sudo apt-get -y update
 sudo apt-get -y install apache2
 
 # Installing PHP and it's dependencies
-sudo apt-get -y install php5 libapache2-mod-php5 php5-mcrypt php5-gd
+sudo apt-get -y install php libapache2-mod-php php-dompdf php-gd php-xml php-mbstring php-gettext
 
 # Installing MySQL and it's dependencies, Also, setting up root password for MySQL as it will prompt to enter the password during installation
 
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${DB_ROOT_PASS}"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${DB_ROOT_PASS}"
-sudo apt-get -y install mysql-server libapache2-mod-auth-mysql php5-mysql
+sudo apt-get -y install mysql-server php-mysql
+
+
 
 # Creat database
 if [ ! -f /var/log/databasesetup ];
@@ -32,13 +34,17 @@ then
     touch /var/log/databasesetup
 fi
 
-# setup hosts file
+# setup hosts file, enable clean url rewrite
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
     DocumentRoot "/var/www/html/${PROJECTFOLDER}"
     <Directory "/var/www/html/${PROJECTFOLDER}">
         AllowOverride All
-        Require all granted
+        RewriteEngine on
+        RewriteBase /
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
     </Directory>
 </VirtualHost>
 EOF
