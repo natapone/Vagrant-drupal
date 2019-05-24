@@ -8,4 +8,4 @@ Simple vagrant box for Drupal installation
 
 # Getting start
 $ vagrant up
-http://localhost:3000/install.php
+http://localhost:3000/core/install.php
