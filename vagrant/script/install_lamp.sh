@@ -4,6 +4,7 @@ PROJECTFOLDER='project'
 DB_ROOT_PASS='devel'
 DB_USER='devel'
 DB_NAME='drupal'
+DB_HOST_ACCESS= '%' #'localhost'
 
 # Updating repository
 
@@ -21,15 +22,25 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password passwor
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${DB_ROOT_PASS}"
 sudo apt-get -y install mysql-server php-mysql
 
-
-
 # Creat database
 if [ ! -f /var/log/databasesetup ];
 then
-    echo "CREATE USER '${DB_USER}'@'localhost' IDENTIFIED BY '${DB_ROOT_PASS}'" | mysql -uroot -p${DB_ROOT_PASS}
+
+    echo "CREATE USER '${DB_USER}'@'${DB_HOST_ACCESS}' IDENTIFIED BY '${DB_ROOT_PASS}'" | mysql -uroot -p${DB_ROOT_PASS}
     echo "CREATE DATABASE ${DB_NAME}" | mysql -uroot -p${DB_ROOT_PASS}
-    echo "GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'localhost'" | mysql -uroot -p${DB_ROOT_PASS}
+    echo "GRANT ALL ON ${DB_NAME}.* TO '${DB_USER}'@'${DB_HOST_ACCESS}'" | mysql -uroot -p${DB_ROOT_PASS}
     echo "flush privileges" | mysql -uroot -p${DB_ROOT_PASS}
+
+
+    # Enable MySQL external accessible
+MSQLCONF=$(cat <<EOF
+
+[mysqld]
+bind_address = *
+EOF
+)
+    echo "${MSQLCONF}" >> /etc/mysql/my.cnf
+    sudo service mysql restart
 
     touch /var/log/databasesetup
 fi
