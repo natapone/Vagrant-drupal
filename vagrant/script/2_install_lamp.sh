@@ -18,6 +18,9 @@ sudo apt-get -y install php libapache2-mod-php php-dompdf php-gd php-xml php-mbs
 
 # Installing MySQL and it's dependencies, Also, setting up root password for MySQL as it will prompt to enter the password during installation
 
+# Debug PHP log
+# $ tail -f /var/log/apache2/error.log
+
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${DB_ROOT_PASS}"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${DB_ROOT_PASS}"
 sudo apt-get -y install mysql-server php-mysql
