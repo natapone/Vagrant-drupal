@@ -33,8 +33,8 @@ echo "${DRUPAL_SETTINGS}" > ${PROJECT_PATH}/sites/default/settings.php
 
 # only for fresh install
 # sudo chmod 755 -R ${PROJECT_PATH}
-# sudo chmod 777 -R ${PROJECT_PATH}/sites/default/files
-# sudo chmod 777 ${PROJECT_PATH}/sites/default/settings.php
+sudo chmod 777 -R ${PROJECT_PATH}/sites/default/files
+sudo chmod 777 ${PROJECT_PATH}/sites/default/settings.php
 
 # For Drupal 8
 # sudo apt-get -y install nginx

@@ -1,6 +1,7 @@
 apt-get update --force-yes
 apt-get -f install
 apt-get install -y curl
+apt-get install -y unzip
 
 # locale-gen en_US.UTF-8 th_TH.UTF-8 # add Thai language
 # dpkg-reconfigure locales
