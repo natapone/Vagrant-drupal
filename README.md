@@ -96,11 +96,11 @@ Continue install theme and modules as normal!!!
 
 # GA Tracking ID
 http://128.199.246.222/admin/config/system/google-analytics
-UA-141691818-1
+
 
 # GTM container ID
 http://128.199.246.222/admin/config/system/google_tag
-GTM-TH4VW5X
+
 
 # Check database
 $ mysql -u devel -p -D drupal
