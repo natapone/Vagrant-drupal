@@ -1,5 +1,5 @@
 PROJECT_PATH='/var/www/html/project'
-DRUPAL_VER='drupal-8.8.2'
+DRUPAL_VER='drupal-8.7.3'
 
 DB_ROOT_PASS='devel'
 DB_USER='devel'

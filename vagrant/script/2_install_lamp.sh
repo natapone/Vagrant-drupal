@@ -7,7 +7,6 @@ DB_NAME='drupal'
 DB_HOST_ACCESS= '%' #'localhost'
 
 # Updating repository
-
 # sudo apt-get -y update
 
 # Installing Apache
