@@ -8,7 +8,7 @@ DB_HOST_ACCESS= '%' #'localhost'
 
 # Updating repository
 
-sudo apt-get -y update
+# sudo apt-get -y update
 
 # Installing Apache
 sudo apt-get -y install apache2

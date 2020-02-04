@@ -2,12 +2,12 @@
 Simple vagrant box for Drupal installation
 
 # Setting up latest Drupal
-1. Extract latest Drupal
-2. Copy all files to project folder
-3. Update project/sites/default/settings.php before installation
+1. Check number of Drupal latest version https://www.drupal.org/8/download
+2. Update DRUPAL_VER at vagrant/script/3_install_drupal.sh before install
 
 # Getting start
 $ vagrant up
+
 http://localhost:3000/core/install.php
 
 # Clone module
